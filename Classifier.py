@@ -264,8 +264,13 @@ def perceptron(X_train, y_train):
     showROC(sgd, X_train, y_train, y_scores)
     
     return (conf_mat, [score, precision, recall, f1])
-c3, a3 = perceptron(X_train, y_train)
 
+#>> UNCOMMENT THE BELOW LINES TO RUN THE RESPECTIVE CLASSIFIER MODEL
+#>> (cn, an) is the confusion matrix and evaluation scores tuple returned for the nth model
+
+#c3, a3 = perceptron(X_train, y_train)
+#c2, a2 = gaussianNB(X_train, y_train)
+#c1, a1 = logReg(X_train, y_train)
 
 
 
