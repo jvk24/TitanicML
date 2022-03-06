@@ -266,16 +266,41 @@ def perceptron(X_train, y_train):
     
     return (conf_mat, [score, precision, recall, f1])
 
-#Artificial Neural Network
-def ANN(X_train, y_train):
-    pass
+#>> ARTIFICIAL NEURAL NETWORK
+def ANN(X_train, y_train, lr):
+    network = tf.keras.Sequential([
+        tf.keras.layers.Dense(50, input_shape=(10,), activation='relu'),
+        tf.keras.layers.Dense(2, activation='softmax') #Binary class probabalistic output using softmax
+    ])
+    
+    network.compile(
+        optimizer=tf.keras.optimizers.SGD(learning_rate=lr),
+        loss='sparse_categorical_crossentropy',
+        metrics=['accuracy']
+    )
+    
+    network.fit(
+        X_train,
+        y_train,
+        batch_size=100,
+        epochs=25
+    )
+    
+    print('final loss:', network.evaluate(X_train, y_train))
+    raw_y_pred = network.predict(X_test)
+    y_pred = [(round(a), round(b)) for a,b in raw_y_pred]
+    print(y_pred)
+    
+    return (None, None)
 
 #>> UNCOMMENT THE BELOW LINES TO RUN THE RESPECTIVE CLASSIFIER MODEL
 #>> (cn, an) is the confusion matrix and evaluation scores tuple returned for the nth model
 
 #c3, a3 = perceptron(X_train, y_train)
+
 #c2, a2 = gaussianNB(X_train, y_train)
+
 #c1, a1 = logReg(X_train, y_train)
 
-
+c0, a0 = ANN(X_train, y_train, 0.001)
 
