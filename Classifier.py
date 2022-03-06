@@ -8,6 +8,7 @@ Created on Tue Jan 25 12:22:04 2022
 
 #Imporing the default library set
 import matplotlib.pyplot as plt
+import tensorflow as tf
 import pandas as pd
 import numpy as np
 import os
@@ -264,6 +265,10 @@ def perceptron(X_train, y_train):
     showROC(sgd, X_train, y_train, y_scores)
     
     return (conf_mat, [score, precision, recall, f1])
+
+#Artificial Neural Network
+def ANN(X_train, y_train):
+    pass
 
 #>> UNCOMMENT THE BELOW LINES TO RUN THE RESPECTIVE CLASSIFIER MODEL
 #>> (cn, an) is the confusion matrix and evaluation scores tuple returned for the nth model
